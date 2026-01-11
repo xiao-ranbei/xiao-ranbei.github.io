@@ -1,65 +1,33 @@
 // 日语动词变形核心逻辑
 
-// 动词数据库
-const verbs = [
-    // 五段动词
-    {
-        kanji: "行く",
-        kana: "いく",
-        type: "godan",
-        category: "う"
-    },
-    {
-        kanji: "食べる",
-        kana: "たべる",
-        type: "ichidan"
-    },
-    {
-        kanji: "する",
-        kana: "する",
-        type: "saru"
-    },
-    {
-        kanji: "来る",
-        kana: "くる",
-        type: "kuru"
-    },
-    {
-        kanji: "書く",
-        kana: "かく",
-        type: "godan",
-        category: "く"
-    },
-    {
-        kanji: "読む",
-        kana: "よむ",
-        type: "godan",
-        category: "む"
-    },
-    {
-        kanji: "話す",
-        kana: "はなす",
-        type: "godan",
-        category: "す"
-    },
-    {
-        kanji: "見る",
-        kana: "みる",
-        type: "ichidan"
-    },
-    {
-        kanji: "聞く",
-        kana: "きく",
-        type: "godan",
-        category: "く"
-    },
-    {
-        kanji: "買う",
-        kana: "かう",
-        type: "godan",
-        category: "う"
+// 导入动词数据库
+let verbData;
+
+// 尝试从外部文件导入
+if (typeof window !== 'undefined' && window.verbs) {
+    verbData = window.verbs;
+} else if (typeof require !== 'undefined') {
+    try {
+        verbData = require('./verbs.js');
+    } catch (e) {
+        console.error('Failed to load verbs.js:', e);
+        // 如果加载失败，使用默认动词数据
+        verbData = [
+            { kanji: "行く", kana: "いく", type: "godan", category: "う" },
+            { kanji: "食べる", kana: "たべる", type: "ichidan" },
+            { kanji: "する", kana: "する", type: "saru" },
+            { kanji: "来る", kana: "くる", type: "kuru" }
+        ];
     }
-];
+} else {
+    // 兜底默认数据
+    verbData = [
+        { kanji: "行く", kana: "いく", type: "godan", category: "う" },
+        { kanji: "食べる", kana: "たべる", type: "ichidan" },
+        { kanji: "する", kana: "する", type: "saru" },
+        { kanji: "来る", kana: "くる", type: "kuru" }
+    ];
+}
 
 // 变形类型
 const conjugationTypes = [
@@ -466,9 +434,9 @@ function conjugateVerb(verb, conjugationType) {
 // 随机生成练习
 function generatePractice(verbType = "all", conjugationType = "all") {
     // 过滤动词
-    let filteredVerbs = verbs;
+    let filteredVerbs = verbData;
     if (verbType !== "all") {
-        filteredVerbs = verbs.filter(verb => verb.type === verbType);
+        filteredVerbs = verbData.filter(verb => verb.type === verbType);
     }
     
     // 过滤变形类型
@@ -522,11 +490,19 @@ function getConjugationExplanation(verb, conjugationType) {
 // 导出函数（如果在模块化环境中使用）
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
-        verbs,
+        verbs: verbData,
         conjugationTypes,
         conjugateVerb,
         generatePractice,
         checkAnswer,
         getConjugationExplanation
     };
+} 
+// 在浏览器环境中导出到全局作用域
+else if (typeof window !== 'undefined') {
+    window.generatePractice = generatePractice;
+    window.checkAnswer = checkAnswer;
+    window.getConjugationExplanation = getConjugationExplanation;
+    window.conjugateVerb = conjugateVerb;
+    window.verbData = verbData;
 }
