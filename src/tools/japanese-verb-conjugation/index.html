@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="日语动词变形练习工具，帮助用户练习各类日语动词的变形形式">
+    <meta name="theme-color" content="#3B82F6">
+    <title>日语动词变形练习 | KK工具集</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#6366F1',
+                        dark: '#1E293B',
+                        light: '#F8FAFC',
+                        correct: '#10B981',
+                        incorrect: '#EF4444'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .text-shadow-lg {
+                text-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+            }
+            .bg-gradient-custom {
+                background: linear-gradient(135deg, #3B82F6 0%, #6366F1 100%);
+            }
+            .transition-all-300 {
+                transition: all 300ms ease-in-out;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light text-dark font-sans antialiased">
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="../../index.html" class="text-2xl font-bold text-dark transition-colors hover:text-primary">KK</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="../../index.html" class="font-medium text-dark transition-colors hover:text-primary">首页</a>
+                <a href="../../pages/tools.html" class="font-medium text-dark transition-colors hover:text-primary">工具集</a>
+                <a href="../../pages/contact.html" class="font-medium text-dark transition-colors hover:text-primary">联系方式</a>
+            </nav>
+            <button id="menu-toggle" class="md:hidden text-dark focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="../../index.html" class="font-medium text-dark border-l-4 border-transparent pl-4 transition-colors hover:text-primary hover:border-primary">首页</a>
+                <a href="../../pages/tools.html" class="font-medium text-dark border-l-4 border-transparent pl-4 transition-colors hover:text-primary hover:border-primary">工具集</a>
+                <a href="../../pages/contact.html" class="font-medium text-dark border-l-4 border-transparent pl-4 transition-colors hover:text-primary hover:border-primary">联系方式</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 工具内容 -->
+    <main class="pt-24 pb-16">
+        <section class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-3xl md:text-4xl font-bold mb-8 text-center">日语动词变形练习工具</h1>
+                <p class="text-gray-600 mb-12 text-center">
+                    全面练习日语动词的各类变形形式，包括五段动词、一段动词、サ变动词及カ变动词的各种形态变化
+                </p>
+
+                <!-- 工具主界面 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
+                    <!-- 控制面板 -->
+                    <div class="mb-8 p-4 bg-gray-50 rounded-lg">
+                        <h2 class="text-xl font-semibold mb-4">练习设置</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">动词类型</label>
+                                <select id="verb-type" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                                    <option value="all">全部</option>
+                                    <option value="godan">五段动词</option>
+                                    <option value="ichidan">一段动词</option>
+                                    <option value="saru">サ变动词</option>
+                                    <option value="kuru">カ变动词</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">变形类型</label>
+                                <select id="conjugation-type" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                                    <option value="all">全部</option>
+                                    <option value="masu">ます形</option>
+                                    <option value="te">て形</option>
+                                    <option value="ta">た形</option>
+                                    <option value="nai">ない形</option>
+                                    <option value="ba">ば形</option>
+                                    <option value="命令形">命令形</option>
+                                    <option value="可能形">可能形</option>
+                                    <option value="被动形">被动态</option>
+                                    <option value="使役形">使役态</option>
+                                    <option value="使役被动形">使役被动态</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 题目展示区 -->
+                    <div class="mb-8 p-6 bg-blue-50 rounded-lg border border-blue-100">
+                        <h2 class="text-xl font-semibold mb-2">题目</h2>
+                        <div class="mb-4">
+                            <p class="text-gray-600 mb-2">动词：<span id="verb-display" class="font-medium text-dark">食べる</span></p>
+                            <p class="text-gray-600">变形要求：<span id="conjugation-requirement" class="font-medium text-dark">ます形</span></p>
+                        </div>
+                    </div>
+
+                    <!-- 输入区域 -->
+                    <div class="mb-8">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">请输入变形结果</label>
+                        <div class="flex">
+                            <input type="text" id="answer-input" class="flex-1 px-4 py-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary" placeholder="例如：食べます">
+                            <button id="submit-btn" class="px-6 py-3 bg-primary text-white rounded-r-md hover:bg-secondary transition-colors">
+                                提交答案
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 反馈区域 -->
+                    <div id="feedback-area" class="mb-8 p-4 rounded-lg hidden">
+                        <div id="correct-feedback" class="hidden">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fa fa-check-circle text-correct text-2xl"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h3 class="text-lg font-medium text-correct">回答正确！</h3>
+                                    <div class="mt-2 text-sm text-gray-700">
+                                        <p>做得很好！继续保持。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="incorrect-feedback" class="hidden">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fa fa-times-circle text-incorrect text-2xl"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h3 class="text-lg font-medium text-incorrect">回答错误</h3>
+                                    <div class="mt-2 text-sm text-gray-700">
+                                        <p>正确答案：<span id="correct-answer" class="font-medium"></span></p>
+                                        <p class="mt-1">解析：<span id="explanation" class="font-medium"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 操作按钮区 -->
+                    <div class="flex flex-wrap justify-between items-center">
+                        <button id="next-btn" class="px-6 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors mb-2 md:mb-0">
+                            下一题
+                        </button>
+                        <button id="reset-btn" class="px-6 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors mb-2 md:mb-0">
+                            重置练习
+                        </button>
+                        <button id="stats-btn" class="px-6 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors">
+                            查看统计
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 统计信息 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                    <h2 class="text-xl font-semibold mb-4">练习统计</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-4 bg-gray-50 rounded-lg text-center">
+                            <p class="text-sm text-gray-600">总练习次数</p>
+                            <p id="total-practices" class="text-2xl font-bold">0</p>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-lg text-center">
+                            <p class="text-sm text-gray-600">正确次数</p>
+                            <p id="correct-count" class="text-2xl font-bold text-correct">0</p>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-lg text-center">
+                            <p class="text-sm text-gray-600">正确率</p>
+                            <p id="accuracy-rate" class="text-2xl font-bold">0%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-2xl font-bold mb-2">KK</h2>
+                    <p class="text-gray-400">个人开发者 | 技术爱好者</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fa fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fa fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fa fa-linkedin text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 KK. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../../assets/js/common.js"></script>
+    <script src="verb-conjugation.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
