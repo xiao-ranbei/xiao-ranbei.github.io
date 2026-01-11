@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="KK的个人主页，展示项目和技能">
+    <meta name="description" content="KK的个人主页，展示工具集和技能">
     <meta name="theme-color" content="#3B82F6">
     <title>KK | 个人主页</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,8 +52,8 @@
             <a href="index.html" class="text-2xl font-bold text-dark transition-colors hover:text-primary">KK</a>
             <nav class="hidden md:flex space-x-8">
                 <a href="index.html" class="font-medium text-primary border-b-2 border-primary transition-colors hover:text-secondary">首页</a>
-                <a href="projects.html" class="font-medium text-dark transition-colors hover:text-primary">项目</a>
-                <a href="contact.html" class="font-medium text-dark transition-colors hover:text-primary">联系方式</a>
+                <a href="src/pages/tools.html" class="font-medium text-dark transition-colors hover:text-primary">工具集</a>
+                <a href="src/pages/contact.html" class="font-medium text-dark transition-colors hover:text-primary">联系方式</a>
             </nav>
             <button id="menu-toggle" class="md:hidden text-dark focus:outline-none">
                 <i class="fa fa-bars text-xl"></i>
@@ -63,8 +63,8 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full">
             <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
                 <a href="index.html" class="font-medium text-primary border-l-4 border-primary pl-4 transition-colors hover:text-secondary">首页</a>
-                <a href="projects.html" class="font-medium text-dark border-l-4 border-transparent pl-4 transition-colors hover:text-primary hover:border-primary">项目</a>
-                <a href="contact.html" class="font-medium text-dark border-l-4 border-transparent pl-4 transition-colors hover:text-primary hover:border-primary">联系方式</a>
+                <a href="src/pages/tools.html" class="font-medium text-dark border-l-4 border-transparent pl-4 transition-colors hover:text-primary hover:border-primary">工具集</a>
+                <a href="src/pages/contact.html" class="font-medium text-dark border-l-4 border-transparent pl-4 transition-colors hover:text-primary hover:border-primary">联系方式</a>
             </div>
         </div>
     </header>
@@ -96,10 +96,10 @@
                         </div>
                     </div>
                     <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                        欢迎来到我的个人主页，这里展示了我的项目和技能。
+                        欢迎来到我的个人主页，这里展示了我的工具集和技能。
                     </p>
-                    <a href="projects.html" class="inline-block bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-secondary transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                        查看我的项目
+                    <a href="src/pages/tools.html" class="inline-block bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-secondary transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        查看我的工具集
                     </a>
                 </div>
             </div>
@@ -133,54 +133,7 @@
     </footer>
 
     <!-- JavaScript -->
-    <script>
-        // 导航栏滚动效果
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-white', 'shadow-md');
-                navbar.classList.remove('bg-transparent');
-            } else {
-                navbar.classList.remove('bg-white', 'shadow-md');
-                navbar.classList.add('bg-transparent');
-            }
-        });
-
-        // 移动端菜单切换
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // KK 文字效果切换
-        let currentEffect = 1;
-        const totalEffects = 3;
-        
-        function switchEffect() {
-            const effects = document.querySelectorAll('.kk-effect');
-            effects.forEach(effect => {
-                effect.classList.add('opacity-0');
-            });
-            
-            currentEffect = currentEffect % totalEffects + 1;
-            document.getElementById(`kk-effect-${currentEffect}`).classList.remove('opacity-0');
-        }
-
-        // 每5秒切换一次效果
-        setInterval(switchEffect, 5000);
-
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+    <script src="src/assets/js/common.js"></script>
+    <script src="src/assets/js/home.js"></script>
 </body>
 </html>
