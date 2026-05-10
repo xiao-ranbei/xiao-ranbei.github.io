@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"assets/images\")",
+      "Bash(mv kk.jpg assets/images/)",
+      "Bash(mv \"简历.html\" index.html)"
+    ],
+    "additionalDirectories": [
+      "E:\\Projects\\xiao-ranbei.github.io"
+    ]
+  }
+}
