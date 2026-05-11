@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关孝申 - .NET客户端开发工程师</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 30px;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: #f5f5f5;
+        }
+        .paper {
+            background: #fff;
+            padding: 40px 48px;
+            box-shadow: 0 1px 4px rgba(0,0,0,.08);
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 18px;
+            border-bottom: 2px solid #1a1a1a;
+            margin-bottom: 20px;
+        }
+        header h1 { font-size: 26px; font-weight: 700; letter-spacing: 1px; }
+        header .subtitle { font-size: 15px; color: #555; margin-top: 4px; }
+        header .contact { font-size: 13px; color: #666; margin-top: 10px; }
+        header .contact + .contact { margin-top: 2px; }
+        header .contact span { display: inline-block; margin-right: 16px; }
+        .photo img {
+            width: 210px;
+            height: 140px;
+            border-radius: 10px;
+            object-fit: cover;
+            object-position: center;
+            border: 2px solid #ddd;
+            flex-shrink: 0;
+        }
+
+        /* Sections */
+        section { margin-bottom: 20px; }
+        h2 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            border-left: 3px solid #333;
+        }
+        h3 { font-size: 14px; margin: 12px 0 4px; }
+
+        /* Profile */
+        .profile-text { color: #333; text-align: justify; }
+
+        /* Skills */
+        .skill-tags { margin: 6px 0 10px; }
+        .skill-tag {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 2px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            color: #333;
+            margin: 2px 3px 2px 0;
+        }
+        .skill-item {
+            display: flex;
+            align-items: baseline;
+            padding: 4px 0;
+            border-bottom: 1px dotted #eee;
+        }
+        .skill-item:last-child { border-bottom: none; }
+        .skill-name { font-weight: 500; min-width: 260px; }
+        .skill-level { color: #555; }
+        .skill-desc { color: #888; font-size: 12px; margin-left: auto; }
+
+        /* Underline emphasis */
+        .u { text-decoration: underline; text-underline-offset: 2px; }
+
+        /* Entries */
+        .entry {
+            margin-bottom: 14px;
+            padding-left: 0;
+        }
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+        .entry-title { font-weight: 600; font-size: 15px; }
+        .entry-date { font-size: 13px; color: #888; white-space: nowrap; }
+        .entry-org { font-size: 13px; color: #555; margin: 1px 0 4px; }
+        .entry-desc { font-size: 13px; color: #444; margin: 1px 0 4px; font-weight: 400; }
+        .entry-tags { margin: 4px 0 4px; font-size: 12px; color: #777; }
+        .entry-tag {
+            display: inline-block;
+            background: #edf2f7;
+            padding: 1px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            color: #444;
+            margin: 1px 2px;
+        }
+        .entry ul { margin: 2px 0 6px; padding-left: 18px; }
+        .entry li { margin-bottom: 1px; font-size: 13px; color: #333; }
+
+        footer {
+            margin-top: 24px;
+            padding-top: 14px;
+            border-top: 1px solid #ddd;
+            font-size: 12px;
+            color: #aaa;
+            text-align: center;
+        }
+
+        @media print {
+            body { background: #fff; padding: 0; }
+            .paper { padding: 20px 30px; box-shadow: none; }
+            section { page-break-inside: auto; }
+            h2 { page-break-after: avoid; }
+            .entry { page-break-inside: avoid; }
+            .page-break-before { page-break-before: always; }
+        }
+        @media (max-width: 640px) {
+            body { padding: 10px; }
+            .paper { padding: 20px 16px; }
+            header { flex-direction: column-reverse; gap: 12px; }
+            .photo img { width: 72px; height: 72px; }
+            .entry-header { flex-direction: column; }
+            .skill-item { flex-wrap: wrap; }
+            .skill-name { min-width: 160px; }
+        }
+    </style>
+</head>
+<body>
+<div class="paper">
+
+<header>
+    <div>
+        <h1>关孝申</h1>
+        <p class="subtitle">.NET客户端开发工程师</p>
+        <p class="contact">
+            <span>&#9993; xiao_ranbei@outlook.com</span>
+            <span>&#9742; 17703708201</span>
+            <span>&#9874; 无锡</span>
+        </p>
+        <p class="contact">
+            <span>年龄：27岁</span>
+            <span>学历：大专</span>
+            <span>日语等级：N2</span>
+        </p>
+    </div>
+    <div class="photo">
+        <img src="assets/images/kk1.jpg" alt="个人照片">
+    </div>
+</header>
+
+<section>
+    <h2>个人简介</h2>
+    <p class="profile-text">
+        5年<span class="u">.NET客户端开发</span>经验，具备日本大型<span class="u">楼宇自动化（BA）</span>项目开发与维护经验。
+        曾参与<span class="u">Fujitsu</span>通信行业相关项目，以及<span class="u">NTT DATA</span>与<span class="u">Azbil</span>楼宇自动化工程工具开发与维护，长期从事基于<span class="u">WinForms</span>的工业软件开发。
+        熟悉<span class="u">BACnet协议</span>、楼宇控制器通信、设备配置管理、数据监控与调试诊断等业务场景。
+        具备大型<span class="u">遗留系统维护</span>经验，参与<span class="u">VB6/VB.NET/C#.NET</span>混合项目开发，并参与<span class="u">.NET Framework向.NET 8</span>升级改造。
+        同时具备<span class="u">Flutter</span>跨平台开发经验，参与日本企业<span class="u">IoT</span>空间管理平台开发，涉及<span class="u">BLE</span>通信、云端API、<span class="u">GetX MVVM-C</span>架构等。
+        具备良好的问题定位能力、旧系统维护能力以及日本项目协作经验。
+    </p>
+</section>
+
+<section>
+    <h2>技术技能</h2>
+
+    <p class="skill-tags">
+        <span class="skill-tag">C#</span>
+        <span class="skill-tag">VB.NET</span>
+        <span class="skill-tag">VB6</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">Dart</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">WinForms</span>
+        <span class="skill-tag">.NET Framework</span>
+        <span class="skill-tag">.NET 8</span>
+        <span class="skill-tag">Flutter</span>
+        <span class="skill-tag">GetX</span>
+        <span class="skill-tag">BACnet</span>
+        <span class="skill-tag">BLE</span>
+        <span class="skill-tag">TCP/IP</span>
+        <span class="skill-tag">SNMP</span>
+        <span class="skill-tag">SSH</span>
+        <span class="skill-tag">SQLite</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">Maven</span>
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">Wireshark</span>
+        <span class="skill-tag">Claude Code</span>
+        <span class="skill-tag">Cursor</span>
+    </p>
+
+    <h3>技能水平</h3>
+    <div class="skill-item">
+        <span class="skill-name">C# / .NET（Framework / .NET 8）客户端开发</span>
+        <span class="skill-level">非常熟悉</span>
+        <span class="skill-desc">能指导他人</span>
+    </div>
+    <div class="skill-item">
+        <span class="skill-name">WinForms / 楼宇自动化 / BACnet 协议</span>
+        <span class="skill-level">非常熟悉</span>
+        <span class="skill-desc">能指导他人</span>
+    </div>
+    <div class="skill-item">
+        <span class="skill-name">VB6 / VB.NET 遗留系统维护</span>
+        <span class="skill-level">非常熟悉</span>
+        <span class="skill-desc">能指导他人</span>
+    </div>
+    <div class="skill-item">
+        <span class="skill-name">网络协议（TCP/IP / BGP / OSPF / SNMP）</span>
+        <span class="skill-level">熟悉</span>
+        <span class="skill-desc">能独立开发</span>
+    </div>
+    <div class="skill-item">
+        <span class="skill-name">Java / Python / 自动化测试框架</span>
+        <span class="skill-level">熟悉</span>
+        <span class="skill-desc">能独立开发</span>
+    </div>
+    <div class="skill-item">
+        <span class="skill-name">Git / Wireshark / Linux / 调试工具</span>
+        <span class="skill-level">熟悉</span>
+        <span class="skill-desc">能独立使用</span>
+    </div>
+    <div class="skill-item">
+        <span class="skill-name">Flutter（Dart / BLE / GetX / MVVM-C）</span>
+        <span class="skill-level">普通</span>
+        <span class="skill-desc">需要协作开发</span>
+    </div>
+    <div class="skill-item">
+        <span class="skill-name">日语（N2 / 业务交流）</span>
+        <span class="skill-level">熟悉</span>
+        <span class="skill-desc">能业务沟通</span>
+    </div>
+
+    <h3>AI辅助开发</h3>
+    <ul>
+        <li>使用<span class="u">Claude Code + Cursor</span>等AI Coding工具辅助开发</li>
+        <li>利用AI进行代码生成、问题定位、Bug分析与重构优化</li>
+        <li>使用AI提升开发效率</li>
+        <li>利用AI辅助旧系统代码理解与遗留项目维护</li>
+        <li>使用AI辅助API调试、SQL编写与文档整理</li>
+    </ul>
+</section>
+
+<section>
+    <h2>项目经验</h2>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">通信自动化测试平台</span>
+            <span class="entry-date">2020.07 - 2021.11</span>
+        </div>
+        <p class="entry-org">参与通信行业 L3 层网络通信协议测试平台开发与维护。项目采用半自动化测试架构，主要面向复杂网络环境下的协议验证与异常场景测试，通过自动化链路检测、协议报文构造与交互式调试能力，为研发与测试团队提供灵活的协议仿真与问题定位平台。</p>
+        <p class="entry-tags"><strong>技术栈：</strong><span class="entry-tag">Java</span><span class="entry-tag">JDK 8/11</span><span class="entry-tag">Python</span><span class="entry-tag">TestNG</span><span class="entry-tag">Cucumber</span><span class="entry-tag">Pcap4j</span><span class="entry-tag">JSch</span><span class="entry-tag">SNMP4J</span><span class="entry-tag">Maven</span><span class="entry-tag">Git</span><span class="entry-tag">Wireshark</span><span class="entry-tag">Linux</span><span class="entry-tag">TCP/IP</span><span class="entry-tag">BGP</span><span class="entry-tag">OSPF</span><span class="entry-tag">VLAN/Trunk</span></p>
+        <p class="entry-tags"><strong>主要贡献：</strong></p>
+        <ul>
+            <li>参与通信自动化测试平台开发与维护</li>
+            <li>基于 Java 搭建可扩展测试框架与底层交互逻辑</li>
+            <li>参与协议报文构造与特殊字段模拟开发</li>
+            <li>支持 BGP、OSPF、ICMP 等 L3 协议测试场景</li>
+            <li>基于 Pcap4j 进行报文生成与协议字段定制</li>
+            <li>基于 SSH 自动化工具实现环境初始化与设备检查</li>
+            <li>协助测试人员进行抓包分析与问题定位</li>
+            <li>参与流量监控、日志回溯与测试报告整合</li>
+            <li>配合研发团队进行复杂网络异常场景验证</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">楼宇自动化工程工具开发</span>
+            <span class="entry-date">2021.12 - 2023.04;2025.06 - 至今</span>
+        </div>
+        <p class="entry-org">参与日本<span class="u">楼宇自动化（BA）</span>大型工程工具开发与维护。项目基于<span class="u">.NET WinForms</span>开发，通过<span class="u">BACnet协议</span>与楼宇控制器通信，实现设备配置、数据监控、调试诊断、工程部署与参数维护等功能。</p>
+        <p class="entry-tags"><strong>技术栈：</strong><span class="entry-tag">C#</span><span class="entry-tag">WinForms</span><span class="entry-tag">.NET Framework</span><span class="entry-tag">BACnet</span><span class="entry-tag">SQLite</span></p>
+        <p class="entry-tags"><strong>主要贡献：</strong></p>
+        <ul>
+            <li>WinForms客户端功能开发</li>
+            <li>基于既有框架进行功能追加与维护</li>
+            <li>Bug修复与问题定位</li>
+            <li>BACnet协议相关功能联调</li>
+            <li>楼宇控制器通信调试</li>
+            <li>遗留代码维护与分析</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">FX系列楼宇控制器工程平台</span>
+            <span class="entry-date">2023.04 - 2024.12</span>
+        </div>
+        <p class="entry-org">面向FX系列楼宇控制器的一站式工程配置、调试、维护与管理平台。项目基于<span class="u">VB6/VB.NET/C#.NET</span>等技术构建，运行于工控平台，属于长期维护型大型工业软件项目。</p>
+        <p class="entry-tags"><strong>技术栈：</strong><span class="entry-tag">VB6</span><span class="entry-tag">VB.NET</span><span class="entry-tag">C#.NET</span><span class="entry-tag">WinForms</span><span class="entry-tag">BACnet</span></p>
+        <p class="entry-tags"><strong>主要贡献：</strong></p>
+        <ul>
+            <li>日本项目长期维护与功能修复</li>
+            <li>VB6/VB.NET/C#.NET混合系统维护</li>
+            <li>旧模块问题定位与兼容处理</li>
+            <li>协助现场问题分析与验证</li>
+            <li>日本团队协作开发与沟通</li>
+            <li>日语业务交流</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">Flutter IoT空间管理平台</span>
+            <span class="entry-date">2025.01 - 2025.05</span>
+        </div>
+        <p class="entry-org">面向日本企业办公场景的<span class="u">Flutter IoT</span>控制与空间管理平台。通过<span class="u">BLE</span>近场通信与云端API双通道，实现楼宇设备实时控制与空间状态监控，支持iOS/Android双平台。</p>
+        <p class="entry-tags"><strong>技术栈：</strong><span class="entry-tag">Flutter</span><span class="entry-tag">Dart</span><span class="entry-tag">GetX</span><span class="entry-tag">MVVM-C</span><span class="entry-tag">BLE</span></p>
+        <p class="entry-tags"><strong>主要贡献：</strong></p>
+        <ul>
+            <li>Flutter页面开发</li>
+            <li>BLE通信功能开发</li>
+            <li>GetX MVVM-C架构开发</li>
+            <li>API接入与功能联调</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h2>工作经历</h2>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">通信自动化测试开发工程师</span>
+            <span class="entry-date">2020.07 - 2021.11</span>
+        </div>
+        <p class="entry-org">Fujitsu（国内）</p>
+        <p class="entry-org" class="entry-desc">参与通信行业 L3 层网络通信协议测试平台开发与维护。项目采用半自动化测试架构，面向复杂网络环境下的协议验证与异常场景测试。</p>
+        <ul>
+            <li>基于 Java 搭建可扩展测试框架与底层交互逻辑</li>
+            <li>参与协议报文构造与特殊字段模拟开发</li>
+            <li>支持 BGP、OSPF、ICMP 等 L3 协议测试场景</li>
+            <li>基于 Pcap4j 进行报文生成与协议字段定制</li>
+            <li>协助测试人员进行抓包分析与问题定位</li>
+            <li>配合研发团队进行复杂网络异常场景验证</li>
+        </ul>
+        <p class="entry-tags"><strong>技术栈：</strong><span class="entry-tag">Java</span><span class="entry-tag">Python</span><span class="entry-tag">TestNG</span><span class="entry-tag">Pcap4j</span><span class="entry-tag">JSch</span><span class="entry-tag">SNMP4J</span><span class="entry-tag">Maven</span><span class="entry-tag">Wireshark</span><span class="entry-tag">Linux</span><span class="entry-tag">TCP/IP</span><span class="entry-tag">BGP</span><span class="entry-tag">OSPF</span></p>
+    </div>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">.NET WinForms开发工程师</span>
+            <span class="entry-date">2021.12 - 2023.04</span>
+        </div>
+        <p class="entry-org">NTT DATA（国内）</p>
+        <p class="entry-org" class="entry-desc">参与日本<span class="u">楼宇自动化（BA）</span>大型工程工具开发与维护。项目基于<span class="u">.NET WinForms</span>开发，通过<span class="u">BACnet协议</span>与楼宇控制器通信，实现设备配置、数据监控、调试诊断、工程部署与参数维护等功能。</p>
+        <ul>
+            <li>WinForms客户端功能开发</li>
+            <li>基于既有框架进行功能追加与维护</li>
+            <li>Bug修复与问题定位</li>
+            <li>BACnet协议相关功能联调</li>
+            <li>楼宇控制器通信调试</li>
+            <li>遗留代码维护与分析</li>
+        </ul>
+        <p class="entry-tags"><strong>技术栈：</strong><span class="entry-tag">C#</span><span class="entry-tag">WinForms</span><span class="entry-tag">.NET Framework</span><span class="entry-tag">BACnet</span><span class="entry-tag">SQLite</span></p>
+    </div>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">楼宇自动化工程工具开发</span>
+            <span class="entry-date">2023.04 - 2024.12</span>
+        </div>
+        <p class="entry-org">Azbil（日本驻场）</p>
+        <p class="entry-org" class="entry-desc">面向FX系列楼宇控制器的一站式工程配置、调试、维护与管理平台。项目基于<span class="u">VB6/VB.NET/C#.NET</span>等技术构建，运行于工控平台，属于长期维护型大型工业软件项目。</p>
+        <ul>
+            <li>日本项目长期维护与功能修复</li>
+            <li>VB6/VB.NET/C#.NET混合系统维护</li>
+            <li>旧模块问题定位与兼容处理</li>
+            <li>协助现场问题分析与验证</li>
+            <li>日本团队协作开发与沟通</li>
+            <li>日语业务交流</li>
+        </ul>
+        <p class="entry-tags"><strong>技术栈：</strong><span class="entry-tag">VB6</span><span class="entry-tag">VB.NET</span><span class="entry-tag">C#.NET</span><span class="entry-tag">WinForms</span><span class="entry-tag">BACnet</span></p>
+    </div>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">Flutter开发工程师</span>
+            <span class="entry-date">2025.01 - 2025.05</span>
+        </div>
+        <p class="entry-org">NTT DATA（国内）</p>
+        <p class="entry-org" class="entry-desc">面向日本企业办公场景的<span class="u">Flutter IoT</span>控制与空间管理平台开发。通过<span class="u">BLE</span>近场通信与云端API双通道，实现楼宇设备实时控制与空间状态监控，支持iOS/Android双平台。</p>
+        <ul>
+            <li>Flutter页面开发</li>
+            <li>BLE通信功能开发</li>
+            <li>GetX MVVM-C架构开发</li>
+            <li>API接入与功能联调</li>
+        </ul>
+        <p class="entry-tags"><strong>技术栈：</strong><span class="entry-tag">Flutter</span><span class="entry-tag">Dart</span><span class="entry-tag">GetX</span><span class="entry-tag">MVVM-C</span><span class="entry-tag">BLE</span></p>
+    </div>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">.NET开发工程师</span>
+            <span class="entry-date">2025.06 - 至今</span>
+        </div>
+        <p class="entry-org">NTT DATA（国内）</p>
+        <p class="entry-org" class="entry-desc">持续参与楼宇自动化<span class="u">WinForms</span>项目开发与维护，并参与<span class="u">.NET Framework向.NET 8</span>升级改造。</p>
+        <ul>
+            <li>.NET 8升级改造</li>
+            <li>遗留系统兼容性处理与维护</li>
+            <li>持续参与楼宇自动化WinForms项目开发与维护</li>
+        </ul>
+        <p class="entry-tags"><strong>技术栈：</strong><span class="entry-tag">C#</span><span class="entry-tag">.NET 8</span></p>
+    </div>
+</section>
+
+<section>
+    <h2>教育背景</h2>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">计算机应用技术</span>
+            <span class="entry-date">2017.09 - 2020.06</span>
+        </div>
+        <p class="entry-org">商丘学院</p>
+        <p>学历：专科。主修课程：数据结构、计算机网络、C#程序设计、数据库原理与应用、软件工程等。在校期间积极参与各类编程实践活动，培养了扎实的编程基础和解决问题的能力。</p>
+    </div>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">日语能力考试</span>
+            <span class="entry-date">2024.06</span>
+        </div>
+        <p class="entry-org">JLPT N2</p>
+        <p>获得<span class="u">日语能力考试N2证书</span>，具备良好的日语听说读写能力，能够胜任日本项目的沟通与协作工作。</p>
+    </div>
+</section>
+
+<footer>&copy; 关孝申</footer>
+
+</div>
+</body>
+</html>
