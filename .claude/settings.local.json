@@ -3,10 +3,29 @@
     "allow": [
       "Bash(mkdir -p \"assets/images\")",
       "Bash(mv kk.jpg assets/images/)",
-      "Bash(mv \"简历.html\" index.html)"
+      "Bash(mv \"简历.html\" index.html)",
+      "Bash(where chrome.exe)",
+      "Bash(where wkhtmltopdf.exe)",
+      "Bash(where node.exe)",
+      "Bash(npx --yes puppeteer --version)",
+      "Bash(powershell -Command \"Get-ChildItem 'C:\\\\Program Files', 'C:\\\\Program Files \\(x86\\)' -Filter 'chrome.exe' -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1 FullName\")",
+      "Bash(powershell -Command \"Get-ChildItem 'C:\\\\Program Files', 'C:\\\\Program Files \\(x86\\)' -Filter 'msedge.exe' -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1 FullName\")",
+      "Bash(\"C:/Program Files/Google/Chrome/Application/chrome.exe\" --headless --print-to-pdf=\"E:/Projects/xiao-ranbei.github.io/简历.pdf\" --print-to-pdf-no-header --no-margins --disable-gpu \"file:///E:/Projects/xiao-ranbei.github.io/index.html\")",
+      "Bash(powershell -Command \"\\(Get-Item '简历.pdf'\\).Length\")",
+      "Bash(\"C:/Program Files/Google/Chrome/Application/chrome.exe\" --headless --disable-gpu --print-to-pdf=\"E:/Projects/xiao-ranbei.github.io/简历.pdf\" --print-to-pdf-no-header --no-margins --print-to-pdf-page-size=A4 --virtual-time-budget=10000 \"file:///E:/Projects/xiao-ranbei.github.io/index.html\")",
+      "Bash(npm cache *)",
+      "Bash(rm -rf \"/c/Users/xiao_/AppData/Local/npm-cache/_npx\" 2>/dev/null; npx --yes puppeteer --version 2>&1)",
+      "Bash(taskkill /f /im node.exe)",
+      "Bash(\"C:/Program Files/Google/Chrome/Application/chrome.exe\" --headless --disable-gpu --print-to-pdf=\"E:/Projects/xiao-ranbei.github.io/简历.pdf\" --print-to-pdf-no-header --virtual-time-budget=8000 \"file:///E:/Projects/xiao-ranbei.github.io/index.html\")",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(node generate-pdf.mjs)",
+      "Bash(pip show *)",
+      "Bash(file assets/images/*)"
     ],
     "additionalDirectories": [
-      "E:\\Projects\\xiao-ranbei.github.io"
+      "E:\\Projects\\xiao-ranbei.github.io",
+      "C:\\Users\\xiao_\\AppData\\Local\\npm-cache\\_npx"
     ]
   }
 }
